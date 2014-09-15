@@ -1,24 +1,35 @@
 (*
-Improved Growl New Mail, for Microsoft Outlook 2011 Mac
-By Erik Gustavson (http://eigensoft.com) 
 
-Based on the script by Matt Legend Gemmell ( http://mattgemmell.com/ or @mattgemmell on Twitter). Original at http://mattgemmell.com/using-growl-with-microsoft-outlook
+Improved Growl New Mail, for Microsoft Outlook 2011 Mac
+By Erik Gustavson ( http://eigensoft.com )
+
+Based on the script by Matt Legend Gemmell.
+( http://mattgemmell.com/ or @mattgemmell on Twitter )
+Source: http://mattgemmell.com/using-growl-with-microsoft-outlook
 
 Details can be found here: http://eigenspace.org/microsoft-outlook-growl-notifications
 
 License:
 Copyright (c) 2011 Erik Gustavson
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy,
+modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-(MIT License, see http://www.opensource.org/licenses/mit-license.php)
+( MIT License, see http://www.opensource.org/licenses/mit-license.php )
+
 *)
 
--- don't try to growl if growl is not running (see http://growl.info/documentation/applescript-support.php)
+-- Don not try to growl if growl is not running ( http://growl.info/documentation/applescript-support.php )
+
 tell application "System Events"
 	set isRunning to (count of (every process whose name is "Growl")) > 0
 end tell
@@ -70,9 +81,9 @@ if isRunning is true then
 				
 				-- growl it!
 				ignoring application responses
-				tell application "Growl"
-					notify with name "New Mail" title mysender description (mysubject & " - " & mycontent) application name "Outlook"
-				end tell
+					tell application "Growl"
+						notify with name "New Mail" title mysender description (mysubject & " - " & mycontent) application name "Outlook"
+					end tell
 				end ignoring
 			end if
 			
