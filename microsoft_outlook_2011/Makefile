@@ -21,13 +21,14 @@ RM       = rm -vf
 help:
 	@echo "USAGE:"
 	@echo "    make compile"
+	@echo "    make clean"
 	@echo "    make install"
 	@echo "    make uninstall"
 	@echo "ALTERNATE:"
 	@echo "    make BINDIR='/Library/Application Support/Microsoft/Office/Outlook Script Menu Items'"
 usage:	help
 
-.PHONY:		compile install uninstall
+.PHONY:		compile install uninstall clean
 
 compile:
 	for I in *.applescript; do osacompile -o "$${I%.applescript}.scptd" "$${I}"; done
@@ -37,3 +38,6 @@ install:	compile
 
 uninstall:
 	for I in *.applescript; do $(RM) -r "$(BINDIR)/$${I%.applescript}.scptd"; done
+
+clean:
+	for I in *.applescript; do $(RM) -r "$${I%.applescript}.scptd"; done
